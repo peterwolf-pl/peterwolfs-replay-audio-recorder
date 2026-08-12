@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.peterwolf.replayaudio.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MixinChannel",
+    "MixinSoundBuffer",
+    "MixinSoundEngine",
+    "MixinLibrary"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

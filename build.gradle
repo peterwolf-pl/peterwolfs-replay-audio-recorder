@@ -1,0 +1,95 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+base { archivesName = project.archives_base_name }
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://jitpack.io' }
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = 'Modrinth'
+				url = 'https://api.modrinth.com/maven'
+			}
+		}
+		filter { includeGroup 'maven.modrinth' }
+	}
+}
+
+loom {
+	splitEnvironmentSourceSets()
+	mods {
+		"peterwolfs_replay_audio_recorder" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Concentus (pure-Java Opus). Optional: OggOpusEncoder uses reflection and falls back to FFmpeg.
+	// Uncomment when network/JitPack is available:
+	// include implementation('com.github.lostromb:concentus:master-SNAPSHOT')
+
+	// Optional replay integrations: compile against installed JARs, never hard-require at runtime.
+	compileOnly files(project.replaymod_jar)
+	compileOnly files(project.flashback_jar)
+
+	// Runtime only for local development client runs (optional).
+	if (project.hasProperty('withReplayMods') && project.withReplayMods.toString() == 'true') {
+		runtimeOnly files(project.replaymod_jar)
+		runtimeOnly files(project.flashback_jar)
+	}
+
+	testImplementation platform('org.junit:junit-bom:5.11.4')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+processResources {
+	inputs.property 'version', project.version
+	filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+processClientResources {
+	inputs.property 'version', project.version
+	filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 25
+	options.encoding = 'UTF-8'
+}
+
+java {
+	toolchain { languageVersion = JavaLanguageVersion.of(25) }
+	withSourcesJar()
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+	// Pure unit tests must not require Minecraft or FFmpeg.
+	systemProperty 'replayaudio.tests.ffmpeg', System.getenv('FFMPEG') ?: 'ffmpeg'
+}
+
+jar {
+	from('LICENSE') {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}
+
+publishing {
+	publications {
+		create('mavenJava', MavenPublication) {
+			from components.java
+		}
+	}
+}
