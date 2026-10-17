@@ -2,6 +2,15 @@
 
 All notable changes to PeterWolf's Replay Audio Recorder are documented in this file.
 
+## 1.0.2+26.3 — 2026-09-24
+
+### Changed
+
+- Ported to Minecraft 26.3 (Wilderness Bound).
+- Updated Fabric Loader to `>=0.19.5`, Fabric API to `0.160.7+26.3`, Loom to `1.17-SNAPSHOT`, and Gradle wrapper to `9.5.1`.
+- Updated key mapping type to `InputConstants.Type.KEYBOARD` for MC 26.3 Mojmap API changes.
+- Updated mixin compatibility level to `JAVA_25`.
+
 ## 1.0.1+26.2 — 2026-08-13
 
 ### Fixed / behaviour

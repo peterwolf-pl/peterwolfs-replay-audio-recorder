@@ -5,7 +5,7 @@ import com.peterwolf.replayaudio.recorder.RecordingController;
 import net.minecraft.network.chat.Component;
 
 /**
- * Unobtrusive recording / playback status. In MC 26.2 HUD elements use
+ * Unobtrusive recording / playback status. In MC 26.3 HUD elements use
  * GuiGraphicsExtractor; we keep text construction here for the HudElement adapter.
  */
 public final class ReplayAudioHud {

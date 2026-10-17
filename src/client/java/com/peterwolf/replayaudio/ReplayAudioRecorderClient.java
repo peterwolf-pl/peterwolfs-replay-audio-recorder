@@ -19,7 +19,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,12 +52,12 @@ public final class ReplayAudioRecorderClient implements ClientModInitializer {
 
 		openConfigKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
 			"key.peterwolfs_replay_audio_recorder.config",
-			InputConstants.Type.KEYSYM,
-			GLFW.GLFW_KEY_F7,
+			InputConstants.Type.KEYBOARD,
+			InputConstants.KEY_F7,
 			KeyMapping.Category.MISC
 		));
 
-		// MC 26.2 Fabric HUD API
+		// MC 26.3 Fabric HUD API
 		HudElementRegistry.addLast(Identifier.fromNamespaceAndPath(MOD_ID, "status"), (extractor, delta) -> {
 			// Extractor-based HUD: status is primarily command/log driven; overlay optional.
 			// No-op draw if extractor API is limited without full render path.

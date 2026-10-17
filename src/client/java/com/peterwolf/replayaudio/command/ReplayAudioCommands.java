@@ -1,5 +1,6 @@
 package com.peterwolf.replayaudio.command;
 
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.brigadier.CommandDispatcher;
 import com.peterwolf.replayaudio.gui.ReplayAudioConfigScreen;
 import com.peterwolf.replayaudio.playback.ReplayAudioPlayer;
@@ -9,7 +10,6 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Util;
 
 import java.nio.file.Path;
 
@@ -50,7 +50,7 @@ public final class ReplayAudioCommands {
 			}))
 			.then(ClientCommands.literal("openfolder").executes(ctx -> {
 				Path root = RecordingController.INSTANCE.paths().root();
-				Util.getPlatform().openPath(root);
+				Blaze3D.openPath(root);
 				ctx.getSource().sendFeedback(Component.literal("Opened " + root));
 				return 1;
 			}))

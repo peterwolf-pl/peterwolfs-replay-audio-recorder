@@ -15,7 +15,7 @@ import java.nio.ByteBuffer;
 
 /**
  * When an OpenAL channel attaches a static buffer, duplicate PCM into the shadow mixer.
- * Verified MC 26.2: com.mojang.blaze3d.audio.Channel#attachStaticBuffer(SoundBuffer)
+ * Verified MC 26.3: com.mojang.blaze3d.audio.Channel#attachStaticBuffer(SoundBuffer)
  * and SoundBuffer#format().
  */
 @Mixin(Channel.class)

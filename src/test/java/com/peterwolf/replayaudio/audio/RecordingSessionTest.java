@@ -16,7 +16,7 @@ class RecordingSessionTest {
 	void recordsAndFinalizesMetadata() throws Exception {
 		RecordingSession session = new RecordingSession(64);
 		session.start(tmp, "manual", "id-1", "test_replay", RecordingQuality.HIGH,
-			AudioFormatChoice.OPUS_OGG, Map.of("music", true), true, "26.2", "", "world");
+			AudioFormatChoice.OPUS_OGG, Map.of("music", true), true, "26.3", "", "world");
 		assertTrue(session.isActive());
 		short[] frame = new short[AudioConstants.FRAME_SAMPLES * 2];
 		for (int n = 0; n < 30; n++) {
@@ -40,7 +40,7 @@ class RecordingSessionTest {
 	void manualDoesNotRequireReplayId() throws Exception {
 		RecordingSession session = new RecordingSession(32);
 		session.start(tmp, "manual", "", "manual", RecordingQuality.LOW,
-			AudioFormatChoice.OPUS_OGG, Map.of(), true, "26.2", "", "");
+			AudioFormatChoice.OPUS_OGG, Map.of(), true, "26.3", "", "");
 		session.stop();
 		assertEquals(RecordingSession.State.STOPPED, session.state());
 	}

@@ -7,11 +7,11 @@ Inspected JARs (project `libs/`):
 
 Target stack (from sibling Fabric projects and gradle.properties):
 
-- Minecraft **26.2**
-- Fabric Loader **0.19.3**
-- Fabric API **0.153.0+26.2**
+- Minecraft **26.3**
+- Fabric Loader **0.19.5**
+- Fabric API **0.160.7+26.3**
 - Java **25**
-- Loom **1.16**
+- Loom **1.17-SNAPSHOT**
 - LWJGL OpenAL **3.4.1** (`org.lwjgl.openal.SOFTLoopback` present)
 
 ## ReplayMod

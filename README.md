@@ -1,6 +1,6 @@
 # PeterWolf's Replay Audio Recorder
 
-Client-side Fabric mod for **Minecraft 26.2** that records the game's audio mix during ReplayMod or Flashback gameplay recording, plays it back in sync with the replay timeline, processes cuts/speed changes, and muxes the result into exported MP4 files.
+Client-side Fabric mod for **Minecraft 26.3** that records the game's audio mix during ReplayMod or Flashback gameplay recording, plays it back in sync with the replay timeline, processes cuts/speed changes, and muxes the result into exported MP4 files.
 
 ## Important limitations (read first)
 
@@ -17,9 +17,9 @@ Client-side Fabric mod for **Minecraft 26.2** that records the game's audio mix 
 
 | Component | Version |
 |-----------|---------|
-| Minecraft | 26.2 |
-| Fabric Loader | ≥ 0.19.3 |
-| Fabric API | 0.153.0+26.2 (or compatible) |
+| Minecraft | 26.3 |
+| Fabric Loader | ≥ 0.19.5 |
+| Fabric API | 0.160.7+26.3 (or compatible) |
 | Java | 25+ |
 | ReplayMod (optional) | 26.2-2.6.27 verified |
 | Flashback (optional) | 0.41.1 for MC26.2 verified |
@@ -29,7 +29,7 @@ The mod starts with **only ReplayMod**, **only Flashback**, **both**, or **neith
 
 ## Installation
 
-1. Install Fabric Loader for Minecraft 26.2.
+1. Install Fabric Loader for Minecraft 26.3.
 2. Install Fabric API.
 3. Drop `peterwolfs-replay-audio-recorder-*.jar` into `.minecraft/mods/`.
 4. Optionally install ReplayMod and/or Flashback.

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * Hooks SoundEngine play + tick for continuous shadow mix.
- * Verified MC 26.2: SoundEngine#tick(boolean), #play(SoundInstance) -> PlayResult.
+ * Verified MC 26.3: SoundEngine#tick(boolean), #play(SoundInstance) -> PlayResult.
  */
 @Mixin(SoundEngine.class)
 public class MixinSoundEngine {

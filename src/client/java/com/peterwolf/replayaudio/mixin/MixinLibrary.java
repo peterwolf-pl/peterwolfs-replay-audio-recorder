@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * Observe OpenAL library init/destroy.
- * Verified MC 26.2: Library#init(String, DeviceList, boolean), #cleanup().
+ * Verified MC 26.3: Library#init(String, DeviceList, boolean), #cleanup().
  * Continuous gameplay recording does not switch the device to SOFTLoopback.
  */
 @Mixin(Library.class)
